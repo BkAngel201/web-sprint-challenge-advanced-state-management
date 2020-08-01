@@ -1,3 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 .App {
+  width: 100%;
+  height: 100vh;
+  background: url('https://d302e0npexowb4.cloudfront.net/wp-content/uploads/2019/07/29110926/dream-island-theme-park-smurfs.png');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  padding: 30px 20px;
+  width: 300px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   text-align: center;
+  background: rgba(82, 190, 244, .8);
+  border: 1px solid black;
+}
+
+form h1 {
+  margin-bottom: 20px;
+}
+form label {
+  line-height: 1.9;
+  text-align: left;
+}
+form input {
+  padding: 5px 10px;
+  background: #d99cb8;
+}
+form button,
+.go-back {
+  border: 1px solid black;
+  margin-top: 30px;
+  padding: 10px 5px;
+  background-color: #badd59;
+}
+
+
+.smurfs {
+  width: 600px;
+  margin: 20px auto;
+}
+.smurfs ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.smurfs li {
+  width: 85px;
+}
+.smurfs a {
+  display: flex;
+  justify-content: space-around;
+  border: 7px solid #eb7331;
+  padding: 15px 0px;
+  background: #e88e33;
+  color: #efe8aa;
+  text-decoration: none;
+}
+
+.smurf-details {
+  display: flex;
+  width: 350px;
+  padding: 10px;
+  margin: 60px auto 5px;
+  background: rgba(82, 190, 244, .8);
+  border: 1px solid black;
+}
+.smurf-details .smurf-text {
+  width: 100%;
+}
+.smurf-details .smurf-text .smurf-name,
+.smurf-details .smurf-text .smurf-height,
+.smurf-details .smurf-text .smurf-age {
+  margin-top: 5px;
+  border-left: 5px solid #eb542e;
+  border-bottom: 1px solid #eb542e;
+  padding-left: 10px;
+  padding-bottom: 3px;
+}
+.smurf-details img {
+  height: 110px;
+  width: auto;
+}
+
+.go-back {
+  margin: 20px auto;
+  width: 150px;
+  text-align: center;
+  color: black;
+  text-decoration: none;
 }

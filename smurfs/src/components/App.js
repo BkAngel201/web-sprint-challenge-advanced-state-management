@@ -1,16 +1,64 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import SmurfContext from "../contexts/SmurfContext"
+import axios from "axios"
 import "./App.css";
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
-    );
+import SmurfForm from "./SmurfForm";
+import Smurfs from "./Smurfs";
+import { Switch, Route } from "react-router-dom";
+import SmurfDetail from "./SmurfDetail";
+
+function App () {
+  const [smurfs, setSmurfs] = useState([])
+
+  const fetchSmurfs = () => {
+    axios
+    .get("http://localhost:3333/smurfs")
+    .then((res) => {
+      setSmurfs(res.data)
+    })
+    .catch(err => {
+      console.log(err.message);
+    })
   }
+
+  const addNewSmurf = (name, age, height) => {
+    axios
+    .post("http://localhost:3333/smurfs", {
+      name: name,
+      age: parseInt(age),
+      height: `${height}cm`
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err.message);
+    })
+  }
+
+
+  useEffect(() => {
+    fetchSmurfs()
+  },[smurfs])
+
+
+  
+    return (
+      <SmurfContext.Provider value={{smurfs, addNewSmurf}}>
+        <div className="App">
+          <Switch>
+            <Route path="/smurf/:smurfId">
+              <SmurfDetail />
+            </Route>
+            <Route path="/">
+              <SmurfForm />
+              <Smurfs />
+            </Route>
+            
+          </Switch>
+        </div>
+      </SmurfContext.Provider>
+    );
 }
 
 export default App;
